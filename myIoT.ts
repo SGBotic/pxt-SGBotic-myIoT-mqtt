@@ -38,6 +38,7 @@ namespace SGBotic {
     //let http_status: string = ""
 
     let ubidotsAPIToken: string = ""
+    let ubidotsClientID: string = ""
     let wifi_serial_obj = new wifi_serial_class()
 
     let mqttSubCounter: number = 0
@@ -231,13 +232,18 @@ namespace SGBotic {
     //% subcategory=myIoT-MQTT
     //% weight=90 color=#5dd475
     //% group="Ubidots"
-    //% blockId="connectUbidots" block="Connect to Ubidots with token %TKN"
+    //% blockId="connectUbidots" 
+    //% block="connect to Ubidots| using token %TKN| client ID %clientid"
     //% TKN.defl=your_ubidots_token
-    export function connectUbidots(TKN: string): void {
+    //% clientid.defl=unique_client_name
+    export function connectUbidots(TKN: string, clientid: string): void {
         ubidotsAPIToken = TKN
+        ubidotsClientID = clientid
 
         //let userCfg: string = "AT+MQTTUSERCFG=0,1,\"microbit\",\"bbbbbbbbbbbb\",\"ubidots_user_name\",0,0,\"\"";
-        let userCfg: string = "AT+MQTTUSERCFG=0,1,\"microbit\",\"" + TKN + "\",\"ubidots_user_name\",0,0,\"\"";
+        //let userCfg: string = "AT+MQTTUSERCFG=0,1,\"microbit\",\"" + TKN + "\",\"ubidots_user_name\",0,0,\"\"";
+        let userCfg: string = "AT+MQTTUSERCFG=0,1,\"microbit\",\"" + TKN + "\",\"" + ubidotsClientID + "\",0,0,\"\"";
+
         sendAT(userCfg)
         basic.pause(1000)
         //cmdResponse("OK")
