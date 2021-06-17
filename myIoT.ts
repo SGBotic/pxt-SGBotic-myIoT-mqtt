@@ -242,8 +242,9 @@ namespace SGBotic {
 
         //let userCfg: string = "AT+MQTTUSERCFG=0,1,\"microbit\",\"bbbbbbbbbbbb\",\"ubidots_user_name\",0,0,\"\"";
         //let userCfg: string = "AT+MQTTUSERCFG=0,1,\"microbit\",\"" + TKN + "\",\"ubidots_user_name\",0,0,\"\"";
-        let userCfg: string = "AT+MQTTUSERCFG=0,1,\"microbit\",\"" + TKN + "\",\"" + ubidotsClientID + "\",0,0,\"\"";
-
+        //let userCfg: string = "AT+MQTTUSERCFG=0,1,\"microbit\",\"" + TKN + "\",\"" + ubidotsClientID + "\",0,0,\"\"";
+        let userCfg: string = "AT+MQTTUSERCFG=0,1,\"" + clientid + "\",\"" + TKN + "\",\"microbit\",0,0,\"\"";
+        
         sendAT(userCfg)
         basic.pause(1000)
         //cmdResponse("OK")
